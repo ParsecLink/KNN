@@ -24,6 +24,7 @@ Factor of predictions
 A more user-friendly interface for KNN predictions
 }
 \examples{
+# Formula interface with iris dataset
 data(iris)
 set.seed(123)
 train_idx <- sample(1:nrow(iris), 100)
@@ -31,4 +32,9 @@ train_data <- iris[train_idx, ]
 test_data <- iris[-train_idx, ]
 pred <- knn_predict(Species ~ Sepal.Length + Sepal.Width + Petal.Length + Petal.Width,
                     train_data, test_data, k = 3)
+table(pred, test_data$Species)
+
+# Using only specific predictors
+pred_subset <- knn_predict(Species ~ Sepal.Length + Petal.Length,
+                          train_data, test_data, k = 3)
 }

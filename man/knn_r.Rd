@@ -25,7 +25,7 @@ This function implements the K-Nearest Neighbors algorithm for classification
 using pure R code.
 }
 \examples{
-# Load the iris dataset
+# Basic usage with iris dataset
 data(iris)
 set.seed(123)
 train_idx <- sample(1:nrow(iris), 100)
@@ -34,4 +34,8 @@ test <- iris[-train_idx, 1:4]
 train_labels <- iris[train_idx, 5]
 predictions <- knn_r(train, test, train_labels, k = 5)
 table(predictions, iris[-train_idx, 5])
+
+# Using different distance methods
+pred_euclidean <- knn_r(train, test, train_labels, k = 3, distance_method = "euclidean")
+pred_manhattan <- knn_r(train, test, train_labels, k = 3, distance_method = "manhattan")
 }
