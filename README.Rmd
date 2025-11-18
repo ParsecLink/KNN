@@ -1,0 +1,23 @@
+# KNN Package
+
+An R package implementing the K-Nearest Neighbors classification algorithm with pure R code.
+
+## Features
+
+- **Pure R implementation** of K-Nearest Neighbors algorithm
+- **Two interfaces**: Direct matrix interface and formula interface
+- **Multiple distance metrics**: Euclidean and Manhattan distances
+- **Comprehensive testing**: Unit tests covering all functionality
+- **Performance comparisons**: Benchmarks against `class::knn`
+
+## Installation
+
+You can install the development version from GitHub:
+
+```r
+# Install devtools if not already installed
+if (!require(devtools)) install.packages("devtools")
+
+# Install the KNN package
+devtools::install_github("ParsecLink/KNN")
+
