@@ -1,31 +1,24 @@
 Package: KNN
 Type: Package
-Title: What the Package Does (Title Case)
+Title: K-Nearest Neighbors Classification Implementation
 Version: 0.1.0
-Authors@R: c(
-    person(
-      "Jane", "Doe",
-      email = "jane@example.com",
-      role = c("aut", "cre")
-    )
-  )
-Description: More about what it does (maybe more than one line).
-    Continuation lines should be indented.
-License: What license is it under?
+Authors@R: 
+    person("Meiqi", "Zhu", email = "your.email@example.com", role = c("aut", "cre"))
+Description: A pure R implementation of K-Nearest Neighbors classification algorithm
+    with formula interface and performance comparisons against existing implementations.
+License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.3.3
-LinkingTo: 
-    Rcpp
 Imports: 
-    bench,
-    Matrix,
-    Rcpp
+    stats
 Suggests: 
+    testthat (>= 3.0.0),
     knitr,
     rmarkdown,
-    testthat (>= 3.0.0)
+    bench,
+    class,
+    profmem
 Config/testthat/edition: 3
 VignetteBuilder: knitr
-LinkingTo: Rcpp

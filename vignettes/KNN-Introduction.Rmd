@@ -25,7 +25,7 @@ The KNN package provides an efficient implementation of the K-Nearest Neighbors 
 
 ```{r install, eval=FALSE}
 # Install from GitHub
-devtools::install_github("yourusername/KNN")
+devtools::install_github("ParsecLink/KNN")
 ```
 
 ## Basic Usage

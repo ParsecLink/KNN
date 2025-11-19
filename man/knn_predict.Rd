@@ -2,39 +2,34 @@
 % Please edit documentation in R/knn_functions.R
 \name{knn_predict}
 \alias{knn_predict}
-\title{KNN Predict Function}
+\title{KNN Predict Function (formula interface)}
 \usage{
 knn_predict(formula, data, newdata, k = 1, distance_method = "euclidean")
 }
 \arguments{
-\item{formula}{A formula of the form class ~ predictors}
+\item{formula}{A formula of the form response ~ predictors.}
 
-\item{data}{Training data}
+\item{data}{Training data frame.}
 
-\item{newdata}{Test data}
+\item{newdata}{Test data frame to predict.}
 
-\item{k}{Number of neighbors}
+\item{k}{Number of neighbors (positive integer).}
 
-\item{distance_method}{Distance method}
+\item{distance_method}{Distance method: "euclidean" or "manhattan".}
 }
 \value{
-Factor of predictions
+Factor of predictions (length = nrow(newdata)).
 }
 \description{
-A more user-friendly interface for KNN predictions
+A more user-friendly interface for KNN predictions using a formula.
 }
 \examples{
-# Formula interface with iris dataset
 data(iris)
 set.seed(123)
-train_idx <- sample(1:nrow(iris), 100)
+train_idx <- sample(seq_len(nrow(iris)), 100)
 train_data <- iris[train_idx, ]
 test_data <- iris[-train_idx, ]
 pred <- knn_predict(Species ~ Sepal.Length + Sepal.Width + Petal.Length + Petal.Width,
                     train_data, test_data, k = 3)
 table(pred, test_data$Species)
-
-# Using only specific predictors
-pred_subset <- knn_predict(Species ~ Sepal.Length + Petal.Length,
-                          train_data, test_data, k = 3)
 }

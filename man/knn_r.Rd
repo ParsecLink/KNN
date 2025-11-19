@@ -2,40 +2,44 @@
 % Please edit documentation in R/knn_functions.R
 \name{knn_r}
 \alias{knn_r}
-\title{K-Nearest Neighbors Classification}
+\title{K-Nearest Neighbors Classification (pure R)}
 \usage{
-knn_r(train, test, cl, k = 1, distance_method = "euclidean")
+knn_r(
+  train,
+  test,
+  cl,
+  k = 1,
+  distance_method = "euclidean",
+  tie_method = c("alphabetical", "first", "random")
+)
 }
 \arguments{
-\item{train}{A matrix or data frame of training data}
+\item{train}{A numeric matrix or data frame of training predictors (rows = observations).}
 
-\item{test}{A matrix or data frame of test data}
+\item{test}{A numeric matrix or data frame of test predictors.}
 
-\item{cl}{Factor of true classifications of training set}
+\item{cl}{Factor or character vector of true classifications of training set.}
 
-\item{k}{Number of neighbors to consider}
+\item{k}{Number of neighbors to consider (positive integer).}
 
-\item{distance_method}{Method for distance calculation: "euclidean" (default) or "manhattan"}
+\item{distance_method}{Method for distance calculation: "euclidean" (default) or "manhattan".}
+
+\item{tie_method}{How to break ties: "alphabetical" (default), "first", or "random".}
 }
 \value{
-Factor of classifications for test set
+Factor of classifications for test set (levels preserved from \code{cl}).
 }
 \description{
 This function implements the K-Nearest Neighbors algorithm for classification
 using pure R code.
 }
 \examples{
-# Basic usage with iris dataset
 data(iris)
 set.seed(123)
-train_idx <- sample(1:nrow(iris), 100)
+train_idx <- sample(seq_len(nrow(iris)), 100)
 train <- iris[train_idx, 1:4]
 test <- iris[-train_idx, 1:4]
 train_labels <- iris[train_idx, 5]
 predictions <- knn_r(train, test, train_labels, k = 5)
 table(predictions, iris[-train_idx, 5])
-
-# Using different distance methods
-pred_euclidean <- knn_r(train, test, train_labels, k = 3, distance_method = "euclidean")
-pred_manhattan <- knn_r(train, test, train_labels, k = 3, distance_method = "manhattan")
 }
